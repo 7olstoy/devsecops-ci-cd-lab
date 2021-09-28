@@ -14,9 +14,10 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: bkimminich/juice-shop
+        path: 'app'
     - name: Run gitleaks
       run: >
            docker run
-           -v ${PWD}:/app
+           -v ${PWD}/app:/app
            zricethezav/gitleaks:latest
            --path="/app"
