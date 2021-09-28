@@ -11,10 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Clone dangerous repo
-      uses: actions/checkout@v2
-      with:
-        repository: bkimminich/juice-shop
-        path: 'app'
+      run: git clone https://github.com/juice-shop/juice-shop.git app
     - name: Run gitleaks
       run: >
            docker run
