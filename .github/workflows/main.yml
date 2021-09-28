@@ -17,4 +17,8 @@ jobs:
            docker run
            -v ${PWD}/app:/app
            zricethezav/gitleaks:latest
-           --path="/app"
+           --path="/app" 
+           --report=/app/gitleaks.report
+    - name: Echo report
+      run: cat app/gitleaks.report
+      if: ${{ failure() }}
