@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clone dangerous repo
+      uses: actions/checkout@v2
+      with:
+        repository: bkimminich/juice-shop
+    - name: Run gitleaks
+      run: >
+           docker run
+           -v ${PWD}:/app
+           zricethezav/gitleaks:latest
+           --path="/app"
